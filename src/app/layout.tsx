@@ -3,7 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 
-const custom = Poppins({ weight: ["400", "500", "600"], subsets: ["latin"] });
+const custom = Poppins({ weight: ["400", "500", "600", "700"], subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Sorted Wallet",
