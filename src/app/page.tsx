@@ -7,9 +7,10 @@ import { StatsSection } from "@/components/StatsSection";
 export default function Home() {
   return (
     <main>
-      <HeroBackdrop />
-
-      <HeroSection />
+      <>
+        <HeroBackdrop />
+        <HeroSection />
+      </>
 
       <HighlightsSection />
 

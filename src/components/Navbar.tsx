@@ -16,7 +16,7 @@ export const Navbar: React.FC = () => {
         <LogoIcon className="w-[140px] h-[32px]" />
       </div>
 
-      <div className="flex items-center gap-8 *:font-medium text-gray-300">
+      <div className="hidden lg:flex items-center gap-8 *:font-medium text-gray-300">
         <Link href="#coming-soon">About</Link>
         <Link href="#coming-soon">Resources</Link>
         <Link href="#coming-soon">Company</Link>
