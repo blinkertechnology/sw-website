@@ -1,3 +1,4 @@
+import { AppWorkSection } from "@/components/AppWorkSection";
 import { HeroBackdrop } from "@/components/HeroBackdrop";
 import { HeroSection } from "@/components/HeroSection";
 import { HighlightsSection } from "@/components/HighlightsSection";
@@ -13,6 +14,10 @@ export default function Home() {
       <HighlightsSection />
 
       <StatsSection />
+
+      <AppWorkSection />
+
+      <div className="h-[345px]" />
     </main>
   );
 }

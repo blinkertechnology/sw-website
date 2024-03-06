@@ -1,4 +1,5 @@
 import { LogoIcon } from "./icons/logo-icon";
+import Link from "next/link";
 
 export const Navbar: React.FC = () => {
   return (
@@ -16,11 +17,10 @@ export const Navbar: React.FC = () => {
       </div>
 
       <div className="flex items-center gap-8 *:font-medium text-gray-300">
-        <a href="#">About</a>
-        <a href="#">Resources</a>
-        <a href="#">Company</a>
-
-        <a href="#">Careers</a>
+        <Link href="#coming-soon">About</Link>
+        <Link href="#coming-soon">Resources</Link>
+        <Link href="#coming-soon">Company</Link>
+        <Link href="#coming-soon">Careers</Link>
       </div>
     </nav>
   );
