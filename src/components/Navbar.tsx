@@ -1,3 +1,5 @@
+import { LogoIcon } from "./icons/logo-icon";
+
 export const Navbar: React.FC = () => {
   return (
     <nav
@@ -9,7 +11,9 @@ export const Navbar: React.FC = () => {
       }}
       className="flex bg-gray-800 items-center h-[70px] px-[128px]"
     >
-      <div className="flex flex-shrink-0 items-center mr-auto">Sorted</div>
+      <div className="flex flex-shrink-0 items-center mr-auto">
+        <LogoIcon className="w-[140px] h-[32px]" />
+      </div>
 
       <div className="flex items-center gap-8 *:font-medium text-gray-300">
         <a href="#">About</a>
