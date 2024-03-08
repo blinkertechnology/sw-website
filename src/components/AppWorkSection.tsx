@@ -6,16 +6,15 @@ export const AppWorkSection: React.FC = () => {
     <div className="pt-64 px-10 relative">
       <div className="font-semibold text-5xl desktop:text-8xl text-center leading-[1] tracking-[-0.05em] color-[#010101]">
         <p>
-          how{" "}
+          How{" "}
           <span className="relative">
             sorted
             <span className="absolute top-0 left-full">
               <TopRightArrowHeadIcon className="size-6 fill-[#FF0444]" />
             </span>
           </span>{" "}
-          as
         </p>
-        <p>an app work</p>
+        <p>works</p>
       </div>
 
       <p className="text-left pt-6 desktop:pt-20 max-w-md mx-auto font-semibold text-2xl desktop:text-center leading-[120%] tracking-[-0.05em] color-[#010101]">
@@ -48,7 +47,7 @@ export const AppWorkSection: React.FC = () => {
       >
         <p
           id="coming-soon"
-          className="font-semibold text-4xl desktop:text-7xl leading-[1.2] tracking-[-0.03em] color-[#010101] pb-20"
+          className="font-semibold text-center text-4xl desktop:text-7xl leading-[1.2] tracking-[-0.03em] color-[#010101] pb-20"
         >
           New Website <br />
           Coming{" "}

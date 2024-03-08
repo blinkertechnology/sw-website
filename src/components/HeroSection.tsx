@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { TopRightArrowHeadIcon } from "./icons/top-right-arrow-head";
+import { XIcon } from "./icons/x-icon";
 
 export const HeroSection: React.FC = () => {
   return (
@@ -20,18 +21,24 @@ export const HeroSection: React.FC = () => {
         emerging markets.
       </p>
 
-      <span className="space-x-8 pt-[88px]">
+      <div className="space-x-8 flex gap-1 pt-[88px]">
         <a
+          target="_blank"
           href="https://www.kaiostech.com/store/apps/?bundle_id=kaios.app.sortedwallet"
-          className="inline-block py-4 desktop:py-5 min-w-36 desktop:min-w-56 bg-white rounded-xl font-semibold text-base desktop:text-2xl desktop:leading-[36px] text-center"
+          className="py-4 desktop:py-5 min-w-36 desktop:min-w-56 bg-white rounded-xl font-semibold text-base desktop:text-2xl desktop:leading-[36px] text-center"
         >
           Download
         </a>
 
-        <Link href="#coming-soon" className="inline-block py-4 desktop:py-5 min-w-36 desktop:min-w-56 border border-current rounded-xl font-semibold text-base desktop:text-2xl text-white desktop:leading-[36px] text-center">
-          Learn More
-        </Link>
-      </span>
+        <a
+          target="_blank"
+          href="https://twitter.com/sortedwallet"
+          className="flex py-4 gap-2 desktop:py-5 min-w-36 items-center justify-center desktop:min-w-56 border border-current rounded-xl font-semibold text-base desktop:text-2xl text-white desktop:leading-[36px] text-center"
+        >
+          Follow us on
+          <XIcon className="stroke-white fill-white w-5 h-5" />
+        </a>
+      </div>
     </div>
   );
 };
