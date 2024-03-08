@@ -29,11 +29,11 @@ const config = {
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          foreground: "#010101",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          foreground: "#474747",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -41,11 +41,13 @@ const config = {
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          foreground: "#959595",
         },
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+          "red": "#FF0444",
+          "blue": "#194AFE",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -60,6 +62,8 @@ const config = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        10: "40px",
+        30: "120px"
       },
       keyframes: {
         "accordion-down": {

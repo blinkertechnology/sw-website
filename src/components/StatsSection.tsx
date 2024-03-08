@@ -4,39 +4,29 @@ export const StatsSection: React.FC = () => {
   return (
     <div
       style={{ backgroundImage: `url(${bg.src})` }}
-      className="aspect-auto desktop:aspect-[2] mt-16 mx-3.5 desktop:mx-11 desktop:mt-[198px] rounded-[40px] desktop:rounded-[120px] bg-no-repeat bg-cover bg-right-top lg:bg-bottom desktop:bg-right-top"
+      className="aspect-[9/16] md:aspect-[2] my-16 mx-3.5 desktop:mx-12 desktop:my-48 rounded-10 desktop:rounded-30 bg-no-repeat bg-cover bg-right-top lg:bg-bottom desktop:bg-right-top"
     >
-      <p className="hidden desktop:block pt-[136px] font-semibold text-[22px] text-center tracking-[31%] text-[rgba(228,228,228,0.28)]">
+      <p className="hidden md:block md:py-10 lg:py-14 font-semibold text-2xl text-center text-secondary-foreground/20">
         OUR NUMBERS
       </p>
 
-      <div className="pb-64 pt-14 px-8 lg:pb-80 desktop:px-0 desktop:pt-[84px] desktop:pb-0 lg:max-w-4xl desktop:max-w-[1400px] mx-auto flex flex-col lg:flex-row gap-6 lg:gap-0 justify-between">
-        <p>
-          <span className="font-bold text-[clamp(54px,100%,118px)] text-white leading-[1] desktop:leading-[104px] tracking-[-4%]">
+      <div className="py-24 md:py-8 px-8 lg:py-4 flex flex-col md:flex-row gap-6 justify-around">
+        <p className="text-center">
+          <span className="font-bold text-5xl desktop:text-9xl lg:text-8xl text-white leading-[1] lg:tracking-wider">
             60,000+
           </span>
           <br />
-          <span className="text-white/70 text-base desktop:text-[34px] desktop:leading-[60px] font-medium">
+          <span className="text-white/70 text-base lg:text-2xl desktop:text-4xl font-medium">
             Downloads since March 2023
           </span>
         </p>
 
-        <p>
-          <span className="font-bold text-[clamp(54px,100%,118px)] text-white leading-[1] desktop:leading-[104px] tracking-[-4%] ">
-            64
-          </span>
-          <br />
-          <span className="text-white/70 text-base desktop:text-[34px] desktop:leading-[60px] font-medium">
-            Countries
-          </span>
-        </p>
-
-        <p>
-          <span className="font-bold text-[clamp(54px,100%,118px)] text-white leading-[1] desktop:leading-[104px] tracking-[-4%] ">
+        <p className="text-center">
+          <span className="font-bold text-5xl lg:text-8xl desktop:text-9xl text-white leading-[1] lg:tracking-wider">
             400M+
           </span>
           <br />
-          <span className="text-white/70 text-base desktop:text-[34px] desktop:leading-[60px] font-medium">
+          <span className="text-white/70 text-base lg:text-2xl desktop:text-4xl font-medium">
             Total Addressable Market
           </span>
         </p>

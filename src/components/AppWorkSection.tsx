@@ -4,20 +4,20 @@ import { TopRightArrowHeadIcon } from "./icons/top-right-arrow-head";
 export const AppWorkSection: React.FC = () => {
   return (
     <div className="pt-64 px-10 relative">
-      <div className="font-semibold text-5xl desktop:text-8xl text-center leading-[1] tracking-[-0.05em] color-[#010101]">
+      <div className="font-semibold text-5xl desktop:text-8xl text-center leading-[1] text-primary-foreground">
         <p>
           How{" "}
           <span className="relative">
             sorted
             <span className="absolute top-0 left-full">
-              <TopRightArrowHeadIcon className="size-6 fill-[#FF0444]" />
+              <TopRightArrowHeadIcon className="size-6 fill-accent-red" />
             </span>
           </span>{" "}
         </p>
         <p>works</p>
       </div>
 
-      <p className="text-left pt-6 desktop:pt-20 max-w-md mx-auto font-semibold text-2xl desktop:text-center leading-[120%] tracking-[-0.05em] color-[#010101]">
+      <p className="text-left pt-6 desktop:pt-20 max-w-md mx-auto font-semibold text-2xl desktop:text-center text-primary-foreground">
         Implements robust security measures to protect user funds and data.
       </p>
 
@@ -31,9 +31,9 @@ export const AppWorkSection: React.FC = () => {
           style={{
             backgroundImage: `url(${personUsingSW.src})`,
           }}
-          className="px-8 py-10 rounded-[40px] -mt-24"
+          className="px-8 py-10 rounded-10 -mt-24"
         >
-          <p className="bg-no-repeat bg-cover text-white font-semibold text-3xl leading-[120%] tracking-[-0.04em]">
+          <p className="bg-no-repeat bg-cover text-white font-semibold text-3xl">
             Provides crypto services to feature phone.
           </p>
         </div>
@@ -47,14 +47,14 @@ export const AppWorkSection: React.FC = () => {
       >
         <p
           id="coming-soon"
-          className="font-semibold text-center text-4xl desktop:text-7xl leading-[1.2] tracking-[-0.03em] color-[#010101] pb-20"
+          className="font-semibold text-center text-4xl desktop:text-7xl text-primary-foreground pb-20"
         >
           New Website <br />
           Coming{" "}
           <span className="relative">
             Soon
             <span className="absolute top-0 left-full">
-              <TopRightArrowHeadIcon className="size-6 fill-[#FF0444]" />
+              <TopRightArrowHeadIcon className="size-6 fill-accent-red" />
             </span>
           </span>
         </p>
