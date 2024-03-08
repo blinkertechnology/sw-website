@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { TopRightArrowHeadIcon } from "./icons/top-right-arrow-head";
 
 export const HeroSection: React.FC = () => {
@@ -27,9 +28,9 @@ export const HeroSection: React.FC = () => {
           Download
         </a>
 
-        <a className="inline-block py-4 desktop:py-5 min-w-36 desktop:min-w-56 border border-current rounded-xl font-semibold text-base desktop:text-2xl text-white desktop:leading-[36px] text-center">
+        <Link href="#coming-soon" className="inline-block py-4 desktop:py-5 min-w-36 desktop:min-w-56 border border-current rounded-xl font-semibold text-base desktop:text-2xl text-white desktop:leading-[36px] text-center">
           Learn More
-        </a>
+        </Link>
       </span>
     </div>
   );
