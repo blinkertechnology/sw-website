@@ -4,6 +4,7 @@ import { HeroBackdrop } from "@/components/HeroBackdrop";
 import { HeroSection } from "@/components/HeroSection";
 import { HighlightsSection } from "@/components/HighlightsSection";
 import { StatsSection } from "@/components/StatsSection";
+import { Web3Section } from "@/components/Web3Section";
 
 export default function Home() {
   return (
@@ -20,6 +21,8 @@ export default function Home() {
       <AppWorkSection />
 
       <FeatureSection />
+
+      <Web3Section />
 
       <div className="h-[345px]" />
     </main>
