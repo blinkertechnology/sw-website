@@ -4,6 +4,7 @@ import happyPerson from "@/assets/happy-person-looking-up.png";
 import { TopRightArrowHeadIcon } from "./icons/top-right-arrow-head";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
+import { PlayFillIcon } from "./icons/play-fill-icon";
 
 export const AppWorkSection: React.FC = () => {
   return (
@@ -86,11 +87,16 @@ export const AppWorkSection: React.FC = () => {
           style={{
             backgroundImage: `url(${personUsingSW.src})`,
           }}
-          className="p-4 rounded-3xl mt-10 desktop:-mt-24"
+          className="flex flex-col justify-between p-4 rounded-3xl mt-10 desktop:-mt-24"
         >
           <p className="bg-no-repeat bg-cover text-white font-semibold text-2xl desktop:text-3xl">
             Provides crypto services to feature phone.
           </p>
+
+          <div className="flex items-center gap-2 desktop:gap-4 bg-black/50 -mx-2 desktop:-mx-0 p-2 desktop:p-4 rounded-lg desktop:rounded-2xl">
+            <PlayFillIcon className="flex-none box-content p-2 size-4 fill-black bg-white rounded-full" />
+            <p className="text-sm desktop:text-base text-white font-semibold">Watch how it works.</p>
+          </div>
         </div>
       </div>
     </div>
