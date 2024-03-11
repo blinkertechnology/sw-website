@@ -1,4 +1,5 @@
 import { AppWorkSection } from "@/components/AppWorkSection";
+import { FeatureSection } from "@/components/FeatureSection";
 import { HeroBackdrop } from "@/components/HeroBackdrop";
 import { HeroSection } from "@/components/HeroSection";
 import { HighlightsSection } from "@/components/HighlightsSection";
@@ -17,6 +18,8 @@ export default function Home() {
       <StatsSection />
 
       <AppWorkSection />
+
+      <FeatureSection />
 
       <div className="h-[345px]" />
     </main>
