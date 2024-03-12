@@ -10,7 +10,7 @@ const Links = [
   { text: "Faq", href: "faq" },
   { text: "Resources", href: "resources" },
   { text: "Company", href: "company" },
-  { text: "Careers", href: "careers" },
+  { text: "Contact", href: "contact" },
 ];
 
 export const Navbar: React.FC = () => {
