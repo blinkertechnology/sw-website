@@ -5,6 +5,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { HighlightsSection } from "@/components/HighlightsSection";
 import { StatsSection } from "@/components/StatsSection";
 import { Web3Section } from "@/components/Web3Section";
+import { DemoSection } from "@/components/DemoSection";
 
 export default function Home() {
   return (
@@ -24,6 +25,8 @@ export default function Home() {
 
       <Web3Section />
 
+      <DemoSection />
+      
       <div className="h-[345px]" />
     </main>
   );
