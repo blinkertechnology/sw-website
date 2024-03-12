@@ -2,7 +2,7 @@ import { PlayFillIcon } from "./icons/play-fill-icon";
 
 export const DemoSection = () => {
   return (
-    <div className="mt-24 xl:mt-64">
+    <div className="my-24 xl:my-64">
       <p className="text-secondary-foreground font-semibold text-4xl xl:text-6xl text-center">
         Watch our Demo <span className="text-primary-foreground">Sorted</span>
       </p>
