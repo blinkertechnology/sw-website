@@ -6,6 +6,13 @@ import Link from "next/link";
 import { useState } from "react";
 import { Cross1Icon } from "@radix-ui/react-icons";
 
+const Links = [
+  { text: "Faq", href: "faq" },
+  { text: "Resources", href: "resources" },
+  { text: "Company", href: "company" },
+  { text: "Careers", href: "careers" },
+];
+
 export const Navbar: React.FC = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
@@ -16,18 +23,16 @@ export const Navbar: React.FC = () => {
           <LogoIcon className="w-[140px] h-[32px]" />
         </div>
 
-        <div
-          className="lg:hidden"
-          onClick={() => setSidebarOpen(true)}
-        >
+        <div className="lg:hidden" onClick={() => setSidebarOpen(true)}>
           <HamburgarIcon className="size-11 text-white -mr-1" />
         </div>
 
         <div className="hidden lg:flex hover:*:text-white items-center gap-8 *:font-medium text-gray-300">
-          <Link href="#coming-soon">About</Link>
-          <Link href="#coming-soon">Resources</Link>
-          <Link href="#coming-soon">Company</Link>
-          <Link href="#coming-soon">Careers</Link>
+          {Links.map((link, i) => (
+            <Link key={link.href} href={link.href}>
+              {link.text}
+            </Link>
+          ))}
         </div>
       </nav>
 
@@ -35,7 +40,7 @@ export const Navbar: React.FC = () => {
         className={cn(
           isSidebarOpen ? "shadow-black bg-black/20" : "translate-x-full",
           "inset-0 fixed z-50 p-3 shadow-xl transition-all duration-500",
-          "lg:hidden",
+          "lg:hidden"
         )}
       >
         <div className="relative h-full bg-white rounded-3xl">
@@ -50,14 +55,14 @@ export const Navbar: React.FC = () => {
             </button>
           </div>
           <div className="flex flex-col h-full -translate-y-5 justify-center m-auto w-fit gap-y-8">
-            {["About", "Resources", "Company", "Careers"].map((link) => (
+            {Links.map((link) => (
               <Link
-                href="#coming-soon"
-                key={link}
+                href={link.href}
+                key={link.text}
                 className="text-4xl font-semibold"
                 onClick={() => setSidebarOpen(false)}
               >
-                {link}
+                {link.text}
               </Link>
             ))}
           </div>

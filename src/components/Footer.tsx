@@ -38,7 +38,7 @@ export const Footer = () => {
 
           <div className="p-1 flex bg-white/20 rounded-full focus-within:bg-white/10">
             <input
-              className="px-2 flex-1 w-full outline-none bg-transparent text-white placeholder:text-white/50"
+              className="px-2 xl:px-4 flex-1 w-full outline-none bg-transparent text-white placeholder:text-white/50"
               type="email"
               placeholder="Type your email..."
             />
