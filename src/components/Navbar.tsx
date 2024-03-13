@@ -7,10 +7,9 @@ import { useState } from "react";
 import { Cross1Icon } from "@radix-ui/react-icons";
 
 const Links = [
-  { text: "Faq", href: "faq" },
-  { text: "Resources", href: "resources" },
-  { text: "Company", href: "company" },
+  { text: "Teams", href: "teams" },
   { text: "Contact", href: "contact" },
+  { text: "Faq", href: "faq" },
 ];
 
 export const Navbar: React.FC = () => {
@@ -18,16 +17,16 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className="flex fixed w-full items-center h-[70px] px-6 desktop:px-[128px] bg-[#437AFF] z-50">
-        <div className="flex flex-shrink-0 items-center mr-auto">
-          <LogoIcon className="w-[140px] h-[32px]" />
+      <nav className="fixed z-50 flex h-[70px] w-full items-center bg-[#437AFF] px-6 desktop:px-[128px]">
+        <div className="mr-auto flex flex-shrink-0 items-center">
+          <LogoIcon className="h-[32px] w-[140px]" />
         </div>
 
         <div className="lg:hidden" onClick={() => setSidebarOpen(true)}>
-          <HamburgarIcon className="size-11 text-white -mr-1" />
+          <HamburgarIcon className="-mr-1 size-11 text-white" />
         </div>
 
-        <div className="hidden lg:flex hover:*:text-white items-center gap-8 *:font-medium text-gray-300">
+        <div className="hidden items-center gap-8 text-gray-300 *:font-medium hover:*:text-white lg:flex">
           {Links.map((link, i) => (
             <Link key={link.href} href={link.href}>
               {link.text}
@@ -38,23 +37,23 @@ export const Navbar: React.FC = () => {
 
       <aside
         className={cn(
-          isSidebarOpen ? "shadow-black bg-black/20" : "translate-x-full",
-          "inset-0 fixed z-50 p-3 shadow-xl transition-all duration-500",
-          "lg:hidden"
+          isSidebarOpen ? "bg-black/20 shadow-black" : "translate-x-full",
+          "fixed inset-0 z-50 p-3 shadow-xl transition-all duration-500",
+          "lg:hidden",
         )}
       >
-        <div className="relative h-full bg-white rounded-3xl">
+        <div className="relative h-full rounded-3xl bg-white">
           <div>
             <button
               key={Math.random()}
               type="button"
               onClick={() => setSidebarOpen(false)}
-              className="animate-[exit] duration-500 scale-[.1] fill-mode-forwards absolute right-0 top-0 p-5 text-[80px] leading-[1]"
+              className="absolute right-0 top-0 scale-[.1] animate-[exit] p-5 text-[80px] leading-[1] duration-500 fill-mode-forwards"
             >
               <Cross1Icon className="size-10" />
             </button>
           </div>
-          <div className="flex flex-col h-full -translate-y-5 justify-center m-auto w-fit gap-y-8">
+          <div className="m-auto flex h-full w-fit -translate-y-5 flex-col justify-center gap-y-8">
             {Links.map((link) => (
               <Link
                 href={link.href}

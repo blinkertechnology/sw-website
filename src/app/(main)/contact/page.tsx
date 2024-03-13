@@ -4,7 +4,7 @@ import { contactus } from "./action";
 
 export default function Contact() {
   return (
-    <main className="px-4 pt-20 xl:mx-auto xl:max-w-4xl">
+    <main className="px-4 py-20 xl:mx-auto xl:max-w-4xl">
       <div className="space-y-2 py-10 xl:space-y-4">
         <h1 className="text-4xl font-semibold xl:text-6xl">Contact Us</h1>
 
