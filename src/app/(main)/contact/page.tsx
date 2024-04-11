@@ -2,7 +2,6 @@
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Loader2Icon } from "lucide-react";
-import { useState } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -16,22 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { useMutation } from "@tanstack/react-query";
-
-const contactFormSchema = z.object({
-  name: z.string().min(3, "Name must be at least 3 characters"),
-  email: z.string().email("Email must be a valid address"),
-  company: z.string().min(1, "Company name is required"),
-  website: z.union([
-    z.string().url("Website url must be a valid address"),
-    z.literal(""),
-  ]),
-  message: z
-    .string()
-    .min(5, "Message must be at least 5 characters")
-    .refine((value) => value.split(" ").filter(Boolean).length <= 500, {
-      message: "Message must be less than 500 words",
-    }),
-});
+import { contactFormSchema } from "@/lib/schema/contactFormSchema";
 
 export default function Contact() {
   const form = useForm<z.infer<typeof contactFormSchema>>({
@@ -47,13 +31,11 @@ export default function Contact() {
 
   const { mutate, isPending } = useMutation({
     mutationKey: ["contact"],
-    mutationFn: async (values: z.infer<typeof contactFormSchema>) => {
-      const res = (await new Promise((resolve, reject) => {
-        setTimeout(() => {
-          const res = new Response("{}", { status: 400 });
-          resolve(res);
-        }, 2000);
-      })) as Response;
+    mutationFn: async (_values: z.infer<typeof contactFormSchema>) => {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        body: JSON.stringify(_values),
+      });
 
       if (res.status >= 400) {
         throw res;
