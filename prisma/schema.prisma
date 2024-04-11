@@ -1,6 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
-  binaryTargets = [ "native", "rhel-openssl-1.0.x"]
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
 }
 
 datasource db {
@@ -78,4 +78,37 @@ model Notification {
   createdAt   DateTime  @default(now())
 
   @@index([adminUserId])
+}
+
+enum ContactFormStatus {
+  ACTIVE
+  BLOCKED
+}
+
+model ContactFormUser {
+  id          String            @id @default(uuid())
+  email       String
+  status      ContactFormStatus @default(ACTIVE)
+  ContactForm ContactForm[]
+}
+
+model ContactForm {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  company   String
+  website   String
+  message   String
+  createdAt DateTime @default(now())
+
+  ContactFormUser   ContactFormUser @relation(fields: [contactFormUserId], references: [id])
+  contactFormUserId String
+
+  @@index([contactFormUserId])
+}
+
+model NewsletterSubscription {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
 }
