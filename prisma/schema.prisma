@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = [ "native", "rhel-openssl-1.0.x"]
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model User {
+  id                       String        @id @default(uuid())
+  sub                      String        @unique
+  authType                 String
+  phoneDialCode            String?
+  walletAddress            String
+  notificationSubscription Json          @default("{}")
+  contacts                 Contact[]
+  transactions             Transaction[]
+  createdAt                DateTime      @default(now())
+}
+
+model Contact {
+  id            String   @id @default(uuid())
+  name          String
+  walletAddress String
+  User          User?    @relation(fields: [userId], references: [id])
+  userId        String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([userId])
+}
+
+model Transaction {
+  id        String   @id @default(uuid())
+  txHash    String   @unique
+  from      String
+  to        String
+  symbol    String
+  amount    String
+  chainId   String   @default("0x89")
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    String?
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+enum Role {
+  ADMIN
+  MASTER
+  MEMBER
+}
+
+enum Status {
+  ACTIVE
+  PENDING
+  DISABLED
+}
+
+model AdminUser {
+  id           String         @id @default(uuid())
+  name         String
+  email        String         @unique
+  password     String         @default("")
+  role         Role           @default(MEMBER)
+  status       Status         @default(PENDING)
+  Notification Notification[]
+}
+
+model Notification {
+  id          String    @id @default(uuid())
+  message     String?
+  AdminUser   AdminUser @relation(fields: [adminUserId], references: [id])
+  adminUserId String
+  createdAt   DateTime  @default(now())
+
+  @@index([adminUserId])
+}

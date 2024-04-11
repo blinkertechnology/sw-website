@@ -1,8 +1,81 @@
+"use client";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { contactus } from "./action";
+import { Loader2Icon } from "lucide-react";
+import { useState } from "react";
+import { toast } from "sonner";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { useMutation } from "@tanstack/react-query";
+
+const contactFormSchema = z.object({
+  name: z.string().min(3, "Name must be at least 3 characters"),
+  email: z.string().email("Email must be a valid address"),
+  company: z.string().min(1, "Company name is required"),
+  website: z.union([
+    z.string().url("Website url must be a valid address"),
+    z.literal(""),
+  ]),
+  message: z
+    .string()
+    .min(5, "Message must be at least 5 characters")
+    .refine((value) => value.split(" ").filter(Boolean).length <= 500, {
+      message: "Message must be less than 500 words",
+    }),
+});
 
 export default function Contact() {
+  const form = useForm<z.infer<typeof contactFormSchema>>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      company: "",
+      website: "",
+      message: "",
+    },
+  });
+
+  const { mutate, isPending } = useMutation({
+    mutationKey: ["contact"],
+    mutationFn: async (values: z.infer<typeof contactFormSchema>) => {
+      const res = (await new Promise((resolve, reject) => {
+        setTimeout(() => {
+          const res = new Response("{}", { status: 400 });
+          resolve(res);
+        }, 2000);
+      })) as Response;
+
+      if (res.status >= 400) {
+        throw res;
+      }
+
+      const json = await res.json();
+      console.log(json);
+    },
+
+    onSuccess: () => {
+      toast.success("Message sent successfully");
+      form.reset();
+    },
+    onError: (e: Response) => {
+      if (e.status === 401) {
+        toast.error("You are not authorized to perform this action");
+      } else {
+        toast.error("An error occurred, please try again later");
+      }
+    },
+  });
+
   return (
     <main className="px-4 py-20 xl:mx-auto xl:max-w-4xl">
       <div className="space-y-2 py-10 xl:space-y-4">
@@ -15,39 +88,97 @@ export default function Contact() {
         </p>
       </div>
 
-      <form
-        action={contactus}
-        className="gap-4 space-y-4 text-secondary-foreground xl:grid xl:grid-cols-2 xl:space-y-0"
-      >
-        <label className="block space-y-1 font-semibold">
-          <span>Your Name</span>
-          <Input placeholder="john doe" />
-        </label>
+      <Form {...form}>
+        <form
+          className="gap-4 space-y-4 text-secondary-foreground xl:grid xl:grid-cols-2 xl:space-y-0"
+          onSubmit={form.handleSubmit((values) => {
+            mutate(values);
+          })}
+        >
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Your name</FormLabel>
+                <FormControl>
+                  <Input placeholder="john doe" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <label className="block space-y-1 font-semibold">
-          <span>Your Email</span>
-          <Input type="email" placeholder="john@email.com" />
-        </label>
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Your Email</FormLabel>
+                <FormControl>
+                  <Input placeholder="john@email.com" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <label className="block space-y-1 font-semibold">
-          <span>Company Name</span>
-          <Input placeholder="company name" />
-        </label>
+          <FormField
+            control={form.control}
+            name="company"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Company Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="company name" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <label className="block space-y-1 font-semibold">
-          <span>Company Website</span>
-          <Input placeholder="https://..." />
-        </label>
+          <FormField
+            control={form.control}
+            name="website"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Company Website</FormLabel>
+                <FormControl>
+                  <Input placeholder="https://..." {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <label className="col-span-2 block space-y-1 font-semibold">
-          <span>Message</span>
-          <Textarea placeholder="Enter your message here..." />
-        </label>
+          <FormField
+            control={form.control}
+            name="message"
+            render={({ field }) => (
+              <FormItem className="col-span-2">
+                <FormLabel>Message</FormLabel>
+                <FormControl>
+                  <Textarea
+                    placeholder="Enter your message here..."
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <button className="flex items-center justify-center rounded-lg bg-accent-blue px-8 py-2 font-semibold text-white xl:justify-self-start">
-          Submit
-        </button>
-      </form>
+          <button
+            disabled={isPending}
+            className="flex items-center justify-center rounded-lg bg-accent-blue px-4 py-2 font-semibold text-white disabled:opacity-40 xl:justify-self-start"
+          >
+            {isPending ? (
+              <Loader2Icon size={18} className="mr-2 animate-spin" />
+            ) : null}
+            Submit
+          </button>
+        </form>
+      </Form>
     </main>
   );
 }
