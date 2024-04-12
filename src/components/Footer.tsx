@@ -119,7 +119,7 @@ export const Footer = () => {
 
               <ul className="space-y-2 text-white/40 xl:space-y-1">
                 {items.map((line) => (
-                  <li key={line}>
+                  <li key={line} className="hover:text-white">
                     <Link href="#">{line}</Link>
                   </li>
                 ))}

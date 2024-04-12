@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Cross1Icon } from "@radix-ui/react-icons";
 
 const Links = [
+  { text: "Home", href: "/" },
   { text: "Teams", href: "teams" },
   { text: "Contact", href: "contact" },
   { text: "Faq", href: "faq" },
@@ -18,16 +19,16 @@ export const Navbar: React.FC = () => {
   return (
     <>
       <nav className="fixed z-50 flex h-[70px] w-full items-center bg-[#437AFF] px-6 desktop:px-[128px]">
-        <div className="mr-auto flex flex-shrink-0 items-center">
+        <Link href="/" className="mr-auto flex flex-shrink-0 items-center">
           <LogoIcon className="h-[32px] w-[140px]" />
-        </div>
+        </Link>
 
         <div className="lg:hidden" onClick={() => setSidebarOpen(true)}>
           <HamburgarIcon className="-mr-1 size-11 text-white" />
         </div>
 
         <div className="hidden items-center gap-8 text-gray-300 *:font-medium hover:*:text-white lg:flex">
-          {Links.map((link, i) => (
+          {Links.map((link) => (
             <Link key={link.href} href={link.href}>
               {link.text}
             </Link>
